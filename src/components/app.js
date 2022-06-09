@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import Search from "./views/Search";
-import MySavedDogs from "./views/MySavedDogs";
+import Search from "./Views/Search";
+import MySavedDogs from "./Views/MySavedDogs";
 import "../stylesheets/app.css";
 
 const App = () => {
@@ -11,9 +11,8 @@ const App = () => {
         <Routes>
           <Route path="/search" element={<Search />} />
           <Route exact path="/my_saved_dogs" element={<MySavedDogs />} />
-          <Route>
-            <Navigate to="/search" />
-          </Route>
+
+          <Route path="*" element={<Navigate to="/search" />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
