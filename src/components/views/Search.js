@@ -1,7 +1,12 @@
 import React from 'react';
+import ViewContainer from './ViewContainer'
 
 const Search = () => {
-  return <p>Search</p>
+  return(
+    <ViewContainer view="search">
+      <p>Search</p>
+    </ViewContainer>
+  )
 }
 
 export default Search;

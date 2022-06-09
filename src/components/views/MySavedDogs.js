@@ -1,7 +1,12 @@
 import React from 'react';
+import ViewContainer from './ViewContainer'
 
 const MySavedDogs = () => {
-  return <p>My saved dogs</p>
+  return(
+    <ViewContainer view="my_saved_dogs">
+      <p>My saved dogs</p>
+    </ViewContainer>
+  )
 }
 
 export default MySavedDogs;

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Search from "./views/Search";
 import MySavedDogs from "./views/MySavedDogs";
 import "../stylesheets/app.css";
@@ -8,13 +8,13 @@ const App = () => {
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <Switch>
-          <Route path="/search" component={Search} />
-          <Route exact path="/my_saved_dogs" component={MySavedDogs} />
+        <Routes>
+          <Route path="/search" element={<Search />} />
+          <Route exact path="/my_saved_dogs" element={<MySavedDogs />} />
           <Route>
-            <Redirect to="/search" />
+            <Navigate to="/search" />
           </Route>
-        </Switch>
+        </Routes>
       </BrowserRouter>
     </React.StrictMode>
   );
