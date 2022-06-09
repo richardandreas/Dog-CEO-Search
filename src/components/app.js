@@ -1,20 +1,23 @@
-import React from 'react';
-import { Button } from 'antd';
-import doggoImage from '../images/doggo.jpg';
-import '../stylesheets/app.css';
+import React from "react";
+import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
+import Search from "./views/Search";
+import MySavedDogs from "./views/MySavedDogs";
+import "../stylesheets/app.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="app">
-      <h1>Doggo Search</h1>
-      <p>All great things have small beginnings.</p>
-      <img src={doggoImage} width="600" alt="" />
-      <p>
-        Be sure to take advantage of <a href="https://ant.design/components/button/">Ant Design's components</a>:
-      </p>
-      <Button type="primary">Example Button</Button>
-    </div>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/search" component={Search} />
+          <Route exact path="/my_saved_dogs" component={MySavedDogs} />
+          <Route>
+            <Redirect to="/search" />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </React.StrictMode>
   );
-}
+};
 
 export default App;
