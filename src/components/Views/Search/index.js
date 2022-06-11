@@ -1,15 +1,41 @@
-import React from "react";
-import { Col } from "antd";
-import Container from "../Container";
+import React, { useState } from "react";
+import { Col, Row } from "antd";
+import { SearchContext } from "../../Contexts";
+import { ViewContainer } from "../../Containers";
+import Filter from "./Filter";
 import SearchForm from "./SearchForm";
+import Result from "./Result";
+import useDogApi from "../../../hooks/useDogApi";
+import background from "../../../images/background.png";
 
 const Search = () => {
+  const [data, loading] = useDogApi("/breeds/list/all");
+  const [searchParams, setSearchParams] = useState();
+
   return (
-    <Container view="search">
-      <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin: "80px 0" }}>
-        <SearchForm />
-      </Col>
-    </Container>
+    <ViewContainer view="search">
+      <SearchContext.Provider
+        value={{ data, loading, searchParams, setSearchParams }}
+      >
+        <Col
+          span={24}
+          style={{
+            backgroundImage: `url(${background})`,
+            backgroundSize: "contain",
+          }}
+        >
+          <SearchForm />
+        </Col>
+        <Row style={{ width: "100%" }}>
+          <Col>
+            <Filter />
+          </Col>
+          <Col flex="auto">
+            <Result />
+          </Col>
+        </Row>
+      </SearchContext.Provider>
+    </ViewContainer>
   );
 };
 

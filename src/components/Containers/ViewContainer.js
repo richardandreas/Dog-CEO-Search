@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Layout, PageHeader, Row } from "antd";
+import { Button, Layout, PageHeader } from "antd";
 import forEachObject from "../../utils/forEachObject";
 
 const { Content } = Layout;
 
-const ViewContainer = ({ children, view }) => {
+export const ViewContainer = ({ children, view }) => {
   const navigate = useNavigate();
   const viewTitles = {
     search: "Search",
@@ -28,11 +28,7 @@ const ViewContainer = ({ children, view }) => {
           </Button>
         ))}
       />
-      <Content style={{ margin: "16px 24px" }}>
-        <Row justify="center">{children}</Row>
-      </Content>
+      <Content>{children}</Content>
     </>
   );
 };
-
-export default ViewContainer;
