@@ -18,7 +18,7 @@ Another lesser hard part was just getting used to Ant design. I didn't figure ou
 
 #### What would you do differently with more time?
 
-Maybe I wouldn't have created a hook to make multiple requests, although I think that wout be the most "elegant" solution if it would work. I think that by not using a hook, fetching search results on page reloads (by the URL query params) wouldn't be bugging.
+Maybe I wouldn't have created a hook to make multiple requests, although I think that would be one of the most "elegant" solutions if I would have made it work. I think that by not using a hook, fetching search results on page reloads (by the URL query params) wouldn't be bugging as they are right now.
 
 If I had more time I would also continue investigating why those issues are happening that I mentioned. Eventually I would figure out how to fix them.
 
@@ -30,7 +30,7 @@ I haven't worked professionally with ReactJS since over a year and a half, so, m
 
 #### Was there anything confusing about this challenge? Anything for us to improve?
 
-I had 2 quesitons where I had to reach out to Brian about merging the results and pagination. Maybe that could have been a little bit clearer. But I had a fun time doing this challenge.
+I had 2 quesitons where I had to reach out to Brian. They were about merging the results and pagination. Maybe that could have been a little bit clearer. But overall it was a good challenge and I had a fun time doing this.
 
 ## Here is a screenshot of the result
 
