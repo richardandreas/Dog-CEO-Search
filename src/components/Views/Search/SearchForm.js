@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Button, Form, Row, Select } from "antd";
 import { ContentContainer } from "../../Containers";
@@ -11,6 +11,7 @@ const { Item } = Form;
 
 const SearchForm = () => {
   const navigate = useNavigate();
+  const [optionsSelected, setOptionsSelected] = useState([]);
   const { data, loading, searchParams, setSearchParams } =
     useContext(SearchContext);
 
@@ -46,11 +47,20 @@ const SearchForm = () => {
                     mode="multiple"
                     placeholder="Select breeds"
                     loading={loading}
+                    onChange={(value) => setOptionsSelected(value)}
                   >
                     {data &&
                       forEachObject(data, (key) => {
                         return (
-                          <Option key={key} value={key} label={key}>
+                          <Option
+                            key={key}
+                            value={key}
+                            label={key}
+                            disabled={
+                              optionsSelected.length > 4 &&
+                              !searchParams["breeds"].includes(key)
+                            }
+                          >
                             {key}
                           </Option>
                         );
