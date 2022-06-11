@@ -27,6 +27,7 @@ const SearchForm = () => {
     <ContentContainer>
       <Row justify="center">
         <Col
+          xs={{ span: 24 }}
           md={{ span: 24 }}
           lg={{ span: 18 }}
           xl={{ span: 12 }}
