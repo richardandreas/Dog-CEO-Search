@@ -4,35 +4,35 @@ import { Menu } from "antd";
 import { SearchContext } from "../../Contexts";
 import buildUrlParams from "../../../utils/buildUrlParams";
 import forEachObject from "../../../utils/forEachObject";
-import truncateObject from "../../../utils/truncateObject";
 
 const { Item, SubMenu } = Menu;
 
 const Filter = () => {
-  const { data, searchParams, setSearchParams } = useContext(SearchContext);
   const navigate = useNavigate();
+  const { data, searchParams, setSearchParams } = useContext(SearchContext);
 
   const onClick = ({ key }) => {
-    const [breed, subbreed] = key.split("--");
-    const filterParams = truncateObject({
+    const [breed, subbreed] = key === "all" ? [null, null] : key.split("--");
+    const filterParams = {
       ...searchParams,
       breed,
       subbreed,
-    });
+    };
 
+    setSearchParams(filterParams);
     navigate({
       search: buildUrlParams(filterParams),
     });
   };
 
-  const getURLFilterParams = () => {
-    const filterParams = new URLSearchParams(window.location.search);
+  const getSelectedKey = () => {
+    if (!searchParams?.["breed"]) return "all";
+    if (!searchParams?.["subbreed"]) return searchParams?.["breed"];
 
-    return truncateObject({
-      breed: filterParams.get("breed"),
-      subbreed: filterParams.get("subbreed"),
-    });
+    return `${searchParams["breed"]}--${searchParams["subbreed"]}`;
   };
+
+  if (!searchParams) return <></>;
 
   return (
     <Menu
@@ -40,10 +40,8 @@ const Filter = () => {
       style={{
         width: 256,
       }}
-      defaultSelectedKeys={[
-        `${getURLFilterParams()["breed"]}--${getURLFilterParams()["subbreed"]}`,
-      ]}
-      defaultOpenKeys={[getURLFilterParams()["breed"]]}
+      defaultSelectedKeys={[getSelectedKey()]}
+      defaultOpenKeys={[searchParams["breed"]]}
       mode="inline"
     >
       <Item key="all">all</Item>
@@ -54,7 +52,7 @@ const Filter = () => {
             !searchParams?.["breeds"]?.includes(key)
           )
             return;
-          if (value.length == 0) return <Item key={key}>{key}</Item>;
+          if (value.length === 0) return <Item key={key}>{key}</Item>;
 
           return (
             <SubMenu key={key} title={key}>
