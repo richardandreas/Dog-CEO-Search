@@ -46,15 +46,21 @@ const Result = () => {
     );
 
   const results = dataMerger(data);
-  const paginatedResults = results.slice(page * 12 - 12, page * 12 - 1);
+  const paginatedResults = results.slice(page * 12 - 12, page * 12);
 
   return (
     <ContentContainer>
-      <p>Results for {searchTerm()}</p>
+      <p>{`${results.length} results found for ${searchTerm()}`}</p>
       <Col style={{ margin: "40px 0" }}>
-        {paginatedResults.map((url) => (
-          <DogCard key={url} url={url} />
-        ))}
+        <Row justify="center">
+          <Row className="result-grid" justify="center">
+            <Row gutter={40} justify="evenly">
+              {paginatedResults.map((url) => (
+                <DogCard key={url} url={url} />
+              ))}
+            </Row>
+          </Row>
+        </Row>
       </Col>
       <Row justify="center">
         <Pagination
@@ -62,7 +68,7 @@ const Result = () => {
           pageSize={12}
           total={results.length}
           showSizeChanger={false}
-          onChange={(page, pageSize) => setPage(page)}
+          onChange={(page) => setPage(page)}
         />
       </Row>
     </ContentContainer>

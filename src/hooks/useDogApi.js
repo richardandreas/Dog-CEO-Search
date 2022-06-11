@@ -21,11 +21,11 @@ export const useDogApiMultiple = (routes, trigger) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  let fetchingData = [];
-  let dataCount = 0;
-
   useEffect(() => {
     setLoading(true);
+
+    let fetchingData = [];
+    let dataCount = 0;
 
     routes.forEach((route) => {
       makeRequest("get", buildDogApiUrl(route))
@@ -38,8 +38,8 @@ export const useDogApiMultiple = (routes, trigger) => {
           if (dataCount >= routes.length) setLoading(false);
         });
     });
+    // eslint-disable-next-line
   }, [trigger]);
-
   return [data, loading];
 };
 
