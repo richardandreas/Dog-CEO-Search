@@ -5,14 +5,14 @@ import { ContentContainer } from "../../Containers";
 import { SearchContext } from "../../Contexts";
 import buildUrlParams from "../../../utils/buildUrlParams";
 import forEachObject from "../../../utils/forEachObject";
-import truncateObject from "../../../utils/truncateObject";
 
 const { Option } = Select;
 const { Item } = Form;
 
 const SearchForm = () => {
-  const { data, loading, setSearchParams } = useContext(SearchContext);
   const navigate = useNavigate();
+  const { data, loading, searchParams, setSearchParams } =
+    useContext(SearchContext);
 
   const onSearch = (searchParams) => {
     setSearchParams(searchParams);
@@ -21,13 +21,7 @@ const SearchForm = () => {
     });
   };
 
-  const getURLSearchParams = () => {
-    const searchParams = new URLSearchParams(window.location.search);
-
-    return truncateObject({
-      breeds: searchParams.get("breeds")?.split(","),
-    });
-  };
+  if (!searchParams) return <></>;
 
   return (
     <ContentContainer>
@@ -37,7 +31,7 @@ const SearchForm = () => {
             name="search_form"
             layout="inline"
             onFinish={onSearch}
-            initialValues={getURLSearchParams()}
+            initialValues={searchParams}
           >
             <Row style={{ width: "100%" }}>
               <Col flex="auto">
@@ -59,13 +53,22 @@ const SearchForm = () => {
                 </Item>
               </Col>
               <Col>
+                <Item>
+                  <Button type="primary" htmlType="submit">
+                    Search
+                  </Button>
+                </Item>
+              </Col>
+              <Col>
                 <Item style={{ width: "100%" }}>
                   <Button
-                    type="primary"
-                    htmlType="submit"
+                    type="secondary"
                     style={{ width: "100%" }}
+                    onClick={() => {
+                      navigate("/");
+                    }}
                   >
-                    Search
+                    Reset
                   </Button>
                 </Item>
               </Col>
