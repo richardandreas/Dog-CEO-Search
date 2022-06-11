@@ -26,7 +26,12 @@ const SearchForm = () => {
   return (
     <ContentContainer>
       <Row justify="center">
-        <Col xs={{ span: 24 }} lg={{ span: 12 }} style={{ margin: "80px 0" }}>
+        <Col
+          md={{ span: 24 }}
+          lg={{ span: 18 }}
+          xl={{ span: 12 }}
+          style={{ margin: "80px 0" }}
+        >
           <Form
             name="search_form"
             layout="inline"
