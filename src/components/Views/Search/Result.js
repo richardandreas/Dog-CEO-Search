@@ -62,7 +62,7 @@ const Result = () => {
           pageSize={12}
           total={results.length}
           showSizeChanger={false}
-          onChange={(page, pageSize) => setPage(page)}
+          onChange={(page) => setPage(page)}
         />
       </Row>
     </ContentContainer>
