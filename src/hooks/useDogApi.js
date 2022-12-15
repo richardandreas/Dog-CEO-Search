@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import makeRequest from "../utils/makeRequest";
+import buildSearchUrls from "../utils/buildSearchUrls";
 
 const buildDogApiUrl = (route) => `https://dog.ceo/api${route}`;
 
@@ -17,29 +18,31 @@ export const useDogApi = (route) => {
   return [data, loading];
 };
 
-export const useDogApiMultiple = (routes, trigger) => {
+export const useDogMultiApi = (searchParams) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
 
-    let fetchingData = [];
-    let dataCount = 0;
-
-    routes.forEach((route) => {
-      makeRequest("get", buildDogApiUrl(route))
-        .then((response) => {
-          fetchingData[route] = response["data"]["message"];
-          setData(fetchingData);
-        })
-        .finally(() => {
-          dataCount += 1;
-          if (dataCount >= routes.length) setLoading(false);
-        });
+    let requests = buildSearchUrls(searchParams).map((route) => {
+      return makeRequest("get", buildDogApiUrl(route));
     });
-    // eslint-disable-next-line
-  }, [trigger]);
+
+    Promise.all(requests)
+      .then((responses) => {
+        let mergedData = [];
+        responses.forEach((response) => {
+          mergedData = [...mergedData, ...response["data"]["message"]];
+        });
+        setData(mergedData);
+      })
+      .finally(() => {
+        console.log("finisshh");
+        setLoading(false);
+      });
+  }, [searchParams]);
+
   return [data, loading];
 };
 
