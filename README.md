@@ -20,4 +20,4 @@ yarn start
 
 ## App screenshot
 
-![alt text](./src/images/screenshot.jpeg)
+![alt text](./src/images/readme_screenshot.jpeg)
