@@ -14,6 +14,10 @@ To start the app, run:
 yarn start
 ```
 
+## Live preview
+
+[See the live website here](https://richardandreas.github.io/Dog-CEO-Search/)
+
 ## App screenshot
 
 ![alt text](./src/images/screenshot.jpeg)
