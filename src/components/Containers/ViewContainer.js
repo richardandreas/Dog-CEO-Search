@@ -16,7 +16,7 @@ export const ViewContainer = ({ children, view }) => {
     <>
       <PageHeader
         className="site-page-header"
-        title="Doggo Search"
+        title="Dog CEO Search"
         subTitle={viewTitles[view]}
         extra={forEachObject(viewTitles, (key, value) => (
           <Button
