@@ -1,8 +1,8 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './app';
+import React from "react";
+import { render } from "@testing-library/react";
+import App from "./app";
 
-test("renders 'Doggo Search'", () => {
+test("renders 'Dog CEO Search'", () => {
   const { getByText } = render(<App />);
-  expect(getByText(/Doggo Search/i)).toBeInTheDocument();
+  expect(getByText(/Dog CEO Search/i)).toBeInTheDocument();
 });
