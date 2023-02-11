@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Dog-CEO-Search/static/css/main.763306e2.chunk.css",
+    "main.js": "/Dog-CEO-Search/static/js/main.7d41df44.chunk.js",
+    "main.js.map": "/Dog-CEO-Search/static/js/main.7d41df44.chunk.js.map",
+    "runtime-main.js": "/Dog-CEO-Search/static/js/runtime-main.8171d061.js",
+    "runtime-main.js.map": "/Dog-CEO-Search/static/js/runtime-main.8171d061.js.map",
+    "static/css/2.786ae0dd.chunk.css": "/Dog-CEO-Search/static/css/2.786ae0dd.chunk.css",
+    "static/js/2.153e3673.chunk.js": "/Dog-CEO-Search/static/js/2.153e3673.chunk.js",
+    "static/js/2.153e3673.chunk.js.map": "/Dog-CEO-Search/static/js/2.153e3673.chunk.js.map",
+    "index.html": "/Dog-CEO-Search/index.html",
+    "static/css/2.786ae0dd.chunk.css.map": "/Dog-CEO-Search/static/css/2.786ae0dd.chunk.css.map",
+    "static/css/main.763306e2.chunk.css.map": "/Dog-CEO-Search/static/css/main.763306e2.chunk.css.map",
+    "static/js/2.153e3673.chunk.js.LICENSE.txt": "/Dog-CEO-Search/static/js/2.153e3673.chunk.js.LICENSE.txt",
+    "static/media/background.25290233.png": "/Dog-CEO-Search/static/media/background.25290233.png",
+    "static/media/doggo.1b0bd0ae.jpg": "/Dog-CEO-Search/static/media/doggo.1b0bd0ae.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8171d061.js",
+    "static/css/2.786ae0dd.chunk.css",
+    "static/js/2.153e3673.chunk.js",
+    "static/css/main.763306e2.chunk.css",
+    "static/js/main.7d41df44.chunk.js"
+  ]
+}
